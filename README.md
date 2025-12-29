@@ -1,1 +1,0 @@
-# LazySKD-landingpage
