@@ -3,43 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LazySKD | Coming Soon</title>
+    <title>LazySKD Labs | Automate Everything</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #09090b; /* Deep dark background */
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #0f172a;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
+            overflow: hidden;
+            position: relative;
         }
-        .container { max-width: 600px; padding: 20px; }
-        h1 { font-size: 3rem; margin-bottom: 10px; color: #38bdf8; }
-        p { font-size: 1.2rem; color: #94a3b8; line-height: 1.6; }
-        .social-links { margin-top: 30px; }
+
+        /* Subtle background glowing effect */
+        .background-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(139,92,246,0.05) 50%, rgba(9,9,11,0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+            z-index: 1;
+        }
+
+        /* The "Terminal" header effect */
+        .terminal-header {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background-color: #ef4444; }
+        .dot-yellow { background-color: #f59e0b; }
+        .dot-green { background-color: #22c55e; }
+
+        .code-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .code-highlight { color: var(--accent-blue); }
+        .cursor-blink { animation: blink 1s infinite; }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Main typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            color: #0f172a;
-            background-color: #38bdf8;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 700;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            box-shadow: 0 10px 20px -10px rgba(59,130,246,0.5);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -10px rgba(59,130,246,0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
+
+    <div class="background-glow"></div>
+
     <div class="container">
-        <h1>LazySKD</h1>
-        <p>Smart automation. Better code. Currently building something awesome with Node.js and AWS.</p>
-        <div class="social-links">
-            <a href="#" class="btn">YouTube</a>
-            <a href="https://github.com/lazyskd" class="btn">GitHub</a>
+        <div class="terminal-header">
+            <div class="terminal-dots">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+            </div>
+            <div class="code-text">
+                > initializing lazy_protocol<br>
+                > loading stack: <span class="code-highlight">Node.js</span>, <span class="code-highlight">AWS Lambda</span>...<br>
+                > status: building something awesome<span class="cursor-blink">_</span>
+            </div>
         </div>
-    </div>
-</body>
-</html>
+
+        <h1>LazySKD Labs</h1>
+        <p class="subtitle">
+            The art of productive laziness. Building efficient cloud architectures and automating the boring stuff. Full site deploying soon.
+        </p>
+
+        <div class="button-group">
+            <a href="https://www.youtube.com/@lazyskd" target="_blank" class="btn btn-primary">
+                Subscribe on YouTube
+            </a>
+            <a href="
